@@ -17,21 +17,23 @@ public class FindText {
     File file = new File("./input.txt");
     try {
       BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-      String stmt=br.readLine();
-      Scanner in =new Scanner(System.in);
+      String stmt = br.readLine();
+      Scanner in = new Scanner(System.in);
       System.out.println("Enter the string to search");
-      String search=in.nextLine();
-      while(stmt!=null){
-        if(findText(stmt, search))
-        {
+      String search = in.nextLine();
+      while (stmt != null) {
+        if (findText(stmt, search)) {
           System.out.println("The text is found");
+          br.close();
+          in.close();
           return;
         }
-        stmt=br.readLine();
+        stmt = br.readLine();
 
       }
       System.out.println("The text is not found");
       br.close();
+      in.close();
 
     } catch (IOException e) {
       e.printStackTrace();
